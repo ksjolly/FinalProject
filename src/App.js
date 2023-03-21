@@ -22,7 +22,7 @@ function App() {
         <h1>NYT Movie App</h1>
         
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/FinalProject" element={<Home />} />
           <Route exact path="/selected/:id" element={<Selected />} />
         </Routes>
       </div>
