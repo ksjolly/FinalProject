@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const BASE_URL_NYT = 'https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key='
 const API_KEY_NYT = 'G2CH68AZ4NLmqP4YeSko5iJZBdwxLlko'
-const BASE_URL_OMDB = 'http://omdbapi.com?'
+const BASE_URL_OMDB = 'https://omdbapi.com?'
 const API_KEY_OMDB = '&apikey=3e2785f0';
 
 export const Home = () => {
@@ -44,7 +44,7 @@ export const Home = () => {
 
         fetch(url)
             .then(function (data) {
-                // console.log('The data.json returned from the fetch at NYT is', data);
+                console.log('The data.json returned from the fetch at NYT is', data);
                 return data.json();
             })
             .then(function (responseJson) {
@@ -52,13 +52,13 @@ export const Home = () => {
                 return results;
             })
             .then(function (results) {
-                // console.log(results);
-                // console.log(results[0].display_title);
+                console.log(results);
+                console.log(results[0].display_title);
                 for (let i = 0; i < results.length; i++) {
                     let title = (results[i].display_title).replace(/ /g, "+");
                     urlMap.push(`${BASE_URL_OMDB}t=${title}${API_KEY_OMDB}`);
                 }
-                //console.log(urlMap);
+                console.log(urlMap);
                 return urlMap;
 
             })
@@ -105,13 +105,6 @@ export const Home = () => {
 
         <div className="Item-box">
             <h1>Home Page!</h1>
-            {/* <input
-                type="text"
-                placeholder="Search"
-                width="50%"
-                value={searchTerm}
-                onSubmit={handleChange}
-            /> */}
             <label for="reviewers">Choose a reviewer: </label>
             <select id="reviewers" name="reviewers" width="50%" value={searchTerm} onChange={handleChange}>
                 <option value="A.O. Scott">A.O. Scott</option>
@@ -121,7 +114,6 @@ export const Home = () => {
             </select>
                 <div id="flex-container">
                 </div>
-                <Link to="/login">Selected Movies</Link>
         </div>
     )
 }
